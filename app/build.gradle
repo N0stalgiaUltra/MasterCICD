@@ -1,9 +1,11 @@
-//plugins {
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'org.jetbrains.kotlin.android'
 //    alias(libs.plugins.android.application)
 //    alias(libs.plugins.jetbrains.kotlin.android)
-//}
-apply plugin: 'com.android.application'
-apply plugin: 'org.jetbrains.kotlin.android'
+}
+
 android {
     namespace 'com.example.appcicd'
     compileSdk 34
@@ -25,11 +27,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
     buildFeatures {
         viewBinding true
@@ -51,4 +53,5 @@ dependencies {
     def appCenterSdkVersion = '5.0.4'
     implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+
 }
