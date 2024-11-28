@@ -18,7 +18,10 @@ jobs:
         with:
           distribution: 'temurin' # ou 'zulu', dependendo da sua necessidade
           java-version: '11'
-      
+          
+      - name: Clear Gradle cache
+        run: rm -rf ~/.gradle/caches/
+        
       - name: Upload html test report
         uses: actions/upload-artifact@v4
         with:
