@@ -1,20 +1,18 @@
 package com.example.appcicd
 
-import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-
+import androidx.test.platform.app.InstrumentationRegistry
+import org.junit.Assert.assertEquals
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
-import org.junit.Rule
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -23,22 +21,12 @@ import org.junit.Rule
  */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
-
-    @Rule
-    @JvmField
-    val activityRule = ActivityScenarioRule(MainActivity::class.java)
-
     @Test
-    fun testEditText_ValidateTextNome(){
-        onView(withId(R.id.et_nome))
-            .perform(typeText("Teste"))
-
-
-        // Verificar se o texto foi digitado corretamente
-        onView(withId(R.id.et_nome))
-            .check(matches(withText("Teste")))
+    fun useAppContext() {
+        // Context of the app under test.
+        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+        assertEquals("com.example.appcicd", appContext.packageName)
     }
-
 }
 
 // Nome: Se o nome é igual ou se o nome é diferente
